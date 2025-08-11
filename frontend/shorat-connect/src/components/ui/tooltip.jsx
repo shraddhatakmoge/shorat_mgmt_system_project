@@ -18,7 +18,7 @@ const TooltipContent = React.forwardRef(({ className, sideOffset = 4, ...props }
       className
     )}
     {...props}
-  />
+ />
 ));
 
 TooltipContent.displayName = TooltipPrimitive.Content.displayName;
