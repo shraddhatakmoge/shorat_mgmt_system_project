@@ -11,19 +11,11 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 
-interface HeaderProps {
-  user: {
-    name: string;
-    role: string;
-    avatar?: string;
-  };
-  onLogout: () => void;
-}
-
-export const Header = ({ user, onLogout }: HeaderProps) => {
+export const Header = ({ user, onLogout }) => {
   return (
     <header className="bg-card border-b border-border shadow-soft sticky top-0 z-50">
       <div className="flex items-center justify-between px-6 py-4">
+        {/* Left section: Logo + Search */}
         <div className="flex items-center space-x-4">
           <div className="bg-gradient-primary text-primary-foreground px-4 py-2 rounded-lg font-bold text-lg">
             Shorat Innovations
@@ -37,6 +29,7 @@ export const Header = ({ user, onLogout }: HeaderProps) => {
           </div>
         </div>
 
+        {/* Right section: Notifications + User Menu */}
         <div className="flex items-center space-x-4">
           <Button variant="ghost" size="icon" className="relative">
             <Bell className="h-5 w-5" />
