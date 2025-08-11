@@ -91,7 +91,7 @@ export const FranchiseManagement = () => {
     }
   ];
 
-  const getStatusBadge = (status: string) => {
+  const getStatusBadge = (status) => {
     switch (status) {
       case "active":
         return <Badge className="bg-success text-success-foreground">Active</Badge>;

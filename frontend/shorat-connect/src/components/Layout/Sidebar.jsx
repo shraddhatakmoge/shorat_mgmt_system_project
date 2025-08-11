@@ -1,13 +1,13 @@
-import { 
-  Building2, 
-  Users, 
-  GraduationCap, 
-  CreditCard, 
-  BookOpen, 
-  Calendar, 
-  ClipboardCheck, 
-  TrendingUp, 
-  FileText, 
+import {
+  Building2,
+  Users,
+  GraduationCap,
+  CreditCard,
+  BookOpen,
+  Calendar,
+  ClipboardCheck,
+  TrendingUp,
+  FileText,
   Bell,
   Award,
   Target,
@@ -24,29 +24,14 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
-interface MenuItem {
-  icon: React.ElementType;
-  label: string;
-  badge?: string;
-  submenu?: MenuItem[];
-  active?: boolean;
-}
-
-interface SidebarProps {
-  userRole: string;
-  activeItem: string;
-  onItemClick: (item: string) => void;
-  collapsed?: boolean;
-}
-
-export const Sidebar = ({ userRole, activeItem, onItemClick, collapsed = false }: SidebarProps) => {
-  const getMenuItems = (): MenuItem[] => {
-    const commonItems: MenuItem[] = [
+export const Sidebar = ({ userRole, activeItem, onItemClick, collapsed = false }) => {
+  const getMenuItems = () => {
+    const commonItems = [
       { icon: Home, label: "Dashboard" },
       { icon: Bell, label: "Notifications", badge: "3" },
     ];
 
-    const adminItems: MenuItem[] = [
+    const adminItems = [
       { icon: Building2, label: "Franchise Management" },
       { icon: Users, label: "Staff Management" },
       { icon: GraduationCap, label: "Student Management" },
@@ -67,7 +52,7 @@ export const Sidebar = ({ userRole, activeItem, onItemClick, collapsed = false }
       { icon: Briefcase, label: "Placement Tracker" },
     ];
 
-    const franchiseItems: MenuItem[] = [
+    const franchiseItems = [
       { icon: Users, label: "Staff Management" },
       { icon: GraduationCap, label: "Student Management" },
       { icon: BookOpen, label: "Course Management" },
@@ -80,7 +65,7 @@ export const Sidebar = ({ userRole, activeItem, onItemClick, collapsed = false }
       { icon: MessageSquare, label: "Chat System" },
     ];
 
-    const staffItems: MenuItem[] = [
+    const staffItems = [
       { icon: GraduationCap, label: "My Students" },
       { icon: Calendar, label: "My Batches" },
       { icon: ClipboardCheck, label: "Attendance" },
@@ -102,7 +87,7 @@ export const Sidebar = ({ userRole, activeItem, onItemClick, collapsed = false }
 
   const menuItems = getMenuItems();
 
-  const MenuItem = ({ item }: { item: MenuItem }) => (
+  const MenuItem = ({ item }) => (
     <Button
       variant={activeItem === item.label ? "default" : "ghost"}
       className={cn(
@@ -132,10 +117,12 @@ export const Sidebar = ({ userRole, activeItem, onItemClick, collapsed = false }
   );
 
   return (
-    <aside className={cn(
-      "bg-card border-r border-border h-full transition-all duration-300 shadow-soft",
-      collapsed ? "w-16" : "w-64"
-    )}>
+    <aside
+      className={cn(
+        "bg-card border-r border-border h-full transition-all duration-300 shadow-soft",
+        collapsed ? "w-16" : "w-64"
+      )}
+    >
       <div className="p-4">
         <div className="space-y-1">
           {menuItems.map((item, index) => (
