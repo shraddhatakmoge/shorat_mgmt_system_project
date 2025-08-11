@@ -1,6 +1,5 @@
-import * as React from "react";
-
-import { toast as toastTypes } from "@/components/ui/toast"; // regular import if needed
+import React from "react";
+import { toast as toastTypes } from "@/components/ui/toast"; // keep this if needed
 
 const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 1000000;
@@ -129,7 +128,7 @@ function useToast() {
         listeners.splice(index, 1);
       }
     };
-  }, [state]);
+  }, []);
 
   return {
     ...state,
