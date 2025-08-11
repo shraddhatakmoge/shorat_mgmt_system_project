@@ -8,32 +8,24 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface User {
-  name: string;
-  role: string;
-  email: string;
-  avatar?: string;
-}
-
 const Index = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState(null);
   const [activeItem, setActiveItem] = useState("Dashboard");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
-  const handleLogin = (credentials: { email: string; password: string; role: string }) => {
+  const handleLogin = (credentials) => {
     // Mock authentication - in real app, this would call an API
-    const userData: User = {
+    const userData = {
       name: getRoleDisplayName(credentials.role),
       role: credentials.role,
       email: credentials.email,
     };
-    
     setUser(userData);
     setIsAuthenticated(true);
   };
 
-  const getRoleDisplayName = (role: string) => {
+  const getRoleDisplayName = (role) => {
     switch (role) {
       case "admin":
         return "Admin User";
@@ -95,13 +87,14 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <Header user={user!} onLogout={handleLogout} />
-      
+      <Header user={user} onLogout={handleLogout} />
       <div className="flex flex-1 overflow-hidden">
-        <div className={cn(
-          "transition-all duration-300 flex-shrink-0",
-          sidebarCollapsed ? "w-16" : "w-64"
-        )}>
+        <div
+          className={cn(
+            "transition-all duration-300 flex-shrink-0",
+            sidebarCollapsed ? "w-16" : "w-64"
+          )}
+        >
           <Sidebar
             userRole={user?.role || ""}
             activeItem={activeItem}
@@ -109,7 +102,6 @@ const Index = () => {
             collapsed={sidebarCollapsed}
           />
         </div>
-        
         <main className="flex-1 overflow-auto">
           <div className="p-6">
             <div className="flex items-center mb-6">
@@ -122,14 +114,13 @@ const Index = () => {
                 {sidebarCollapsed ? <Menu className="h-4 w-4" /> : <X className="h-4 w-4" />}
               </Button>
               <div className="text-sm text-muted-foreground">
-                {user?.role === "admin" && "System Administrator"} 
-                {user?.role === "franchise_head" && "Franchise Management"} 
+                {user?.role === "admin" && "System Administrator"}
+                {user?.role === "franchise_head" && "Franchise Management"}
                 {user?.role === "staff" && "Staff Portal"}
                 <span className="mx-2">•</span>
                 {activeItem}
               </div>
             </div>
-            
             {renderContent()}
           </div>
         </main>
