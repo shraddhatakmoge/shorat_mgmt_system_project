@@ -3,18 +3,6 @@ import { Badge } from "@/components/ui/badge";
 import { TrendingUp, TrendingDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface StatsCardProps {
-  title: string;
-  value: string | number;
-  icon: React.ElementType;
-  trend?: {
-    value: number;
-    isPositive: boolean;
-  };
-  badge?: string;
-  color?: "primary" | "success" | "warning" | "info" | "destructive";
-}
-
 export const StatsCard = ({ 
   title, 
   value, 
@@ -22,7 +10,7 @@ export const StatsCard = ({
   trend, 
   badge,
   color = "primary" 
-}: StatsCardProps) => {
+}) => {
   const colorClasses = {
     primary: "text-primary",
     success: "text-success",
