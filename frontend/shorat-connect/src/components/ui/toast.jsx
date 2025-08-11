@@ -35,7 +35,6 @@ const toastVariants = cva(
   }
 );
 
-<<<<<<< HEAD
 const Toast = React.forwardRef(({ className, variant, ...props }, ref) => {
   return (
     <ToastPrimitives.Root
@@ -46,16 +45,6 @@ const Toast = React.forwardRef(({ className, variant, ...props }, ref) => {
   );
 });
 Toast.displayName = ToastPrimitives.Root.displayName;
-=======
-const Toast = React.forwardRef(({ className, variant, ...props }, ref) => (
-  <ToastPrimitives.Root
-    ref={ref}
-    className={cn(toastVariants({ variant }), className)}
-    {...props}
-  />
-))
-Toast.displayName = ToastPrimitives.Root.displayName
->>>>>>> da398745a77ff8ce04bb6c0f6a5317e97244df88
 
 const ToastAction = React.forwardRef(({ className, ...props }, ref) => (
   <ToastPrimitives.Action
@@ -98,13 +87,8 @@ const ToastDescription = React.forwardRef(({ className, ...props }, ref) => (
     className={cn("text-sm opacity-90", className)}
     {...props}
   />
-<<<<<<< HEAD
 ));
 ToastDescription.displayName = ToastPrimitives.Description.displayName;
-=======
-))
-ToastDescription.displayName = ToastPrimitives.Description.displayName
->>>>>>> da398745a77ff8ce04bb6c0f6a5317e97244df88
 
 export {
   ToastProvider,

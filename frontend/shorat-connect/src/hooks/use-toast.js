@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { toast as toastTypes } from "@/components/ui/toast"; // regular import if needed
+import { toast,useToast as toastTypes } from "@/components/ui/toast"; // regular import if needed
 
 const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 1000000;
@@ -88,7 +88,7 @@ function dispatch(action) {
   listeners.forEach((listener) => listener(memoryState));
 }
 
-function toast(props) {
+function createToast(props) {
   const id = genId();
 
   const update = (newProps) =>
@@ -138,4 +138,4 @@ function useToast() {
   };
 }
 
-export { useToast, toast };
+export { useToast, createToast };
